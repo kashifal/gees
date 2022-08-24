@@ -5,10 +5,9 @@ import axios from "axios";
 
 function App() {
   const [data, setData] = useState([]);
+   const [net, setNet] = useState(false);
 
-  const isOnline = navigator.onLine;
-  console.log(isOnline);
-   console.log('hi I am pokemon');
+   
   useEffect(() => {
     axios({
       method: "get",
@@ -16,10 +15,18 @@ function App() {
     }).then(function (res) {
       setData(res?.data?.results);
     });
-  });
+    
+    const online = navigator.onLine;
+    if(online){
+    setNet(true);
+    }else{
+    setNet(false);
+    }
+  },[]);
 
   return (
     <> 
+    <div style={net === true ? {width: '20px'; height:'20px';background-color:'green'; border-radius:'50%'} : {width: '20px'; height:'20px';background-color:'red'; border-radius:'50%'}}></div>
       <div
         style={{
           marginTop: "40px",
