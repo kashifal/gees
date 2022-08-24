@@ -6,6 +6,8 @@ import axios from "axios";
 function App() {
   const [data, setData] = useState([]);
 
+  const isOnline = navigator.onLine;
+  console.log(isOnline);
   useEffect(() => {
     axios({
       method: "get",
