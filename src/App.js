@@ -8,6 +8,7 @@ function App() {
 
   const isOnline = navigator.onLine;
   console.log(isOnline);
+   console.log('hi I am pokemon');
   useEffect(() => {
     axios({
       method: "get",
